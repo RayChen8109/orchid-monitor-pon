@@ -1,0 +1,32 @@
+@import '../../styles.scss';
+
+.link:hover {
+    background-color: rgb(115, 115, 115);
+    color: white;
+}
+
+.logo {
+    height: 2.5em;
+}
+
+.time {
+    color: yellow;
+}
+
+.list-btn {
+    display: none;
+}
+
+@include media-breakpoint-down(xl) {
+    .header-xl {
+        display: none;
+    }
+
+    .list-btn {
+        display: flex;
+    }
+
+    .nav-item :hover {
+        background-color: rgb(172, 172, 172);
+    }
+}

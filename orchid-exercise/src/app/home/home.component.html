@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-4 col-sm-6">
+            <div class="card m-3 shadow rounded border">
+                <div class="card-body">
+                    <h5 class="card-title">46區監測參數</h5>
+                    <div class="row">
+                        <p class="card-text col-6 p-1">溫度 : {{ template_46 }} ℃</p>
+                        <p class="card-text col-6 p-1">濕度 : {{ humidity_46 }} %</p>
+                        <p class="card-text col-6 p-1">照度 : {{ lux_46 }} lux</p>
+                        <p class="card-text col-6 p-1">風速 : {{ speed_46 }} m/s</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-sm-6">
+            <div class="card m-3 shadow rounded border">
+                <div class="card-body">
+                    <h5 class="card-title">47區監測參數</h5>
+                    <div class="row">
+                        <p class="card-text col-6 p-1">溫度 : {{ template_47 }} ℃</p>
+                        <p class="card-text col-6 p-1">濕度 : {{ humidity_47 }} %</p>
+                        <p class="card-text col-6 p-1">照度 : {{ lux_47 }} lux</p>
+                        <p class="card-text col-6 p-1">風速 : {{ speed_47 }} m/s</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-sm-6">
+            <div class="card m-3 shadow rounded border">
+                <div class="card-body">
+                    <h5 class="card-title">48區監測參數</h5>
+                    <div class="row">
+                        <p class="card-text col-6 p-1">溫度 : {{ template_48 }} ℃</p>
+                        <p class="card-text col-6 p-1">濕度 : {{ humidity_48 }} %</p>
+                        <p class="card-text col-6 p-1">照度 : {{ lux_48 }} lux</p>
+                        <p class="card-text col-6 p-1">風速 : {{ speed_48 }} m/s</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12">
+        <div id="template" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+    <div class="col-12">
+        <div id="humidity" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+    <div class="col-12">
+        <div id="lux" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+    <div class="col-12">
+        <div id="speed" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+</div>

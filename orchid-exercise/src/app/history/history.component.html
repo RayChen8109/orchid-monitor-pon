@@ -1,0 +1,129 @@
+<div class="container-fluid">
+    <form class="row mt-3" #searchForm="ngForm" (ngSubmit)="searchForm.form.valid && onSearchSubmit()">
+        <div class="col-xl-4 col-lg-8">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="input-group has-validation">
+                        <i class="bi bi-calendar-date input-group-text" [owlDateTimeTrigger]="dt"></i>
+                        <input class="form-control" [owlDateTime]="dt" [owlDateTimeTrigger]="dt" placeholder="開始時間"
+                            [max]="maxDate" [(ngModel)]="dateFrom" name="refForm" #refForm="ngModel" required
+                            [ngClass]="{ 'is-invalid': searchForm.submitted && refForm.invalid }">
+                        <owl-date-time #dt [showSecondsTimer]="true" (afterPickerOpen)="dateFromPickerOpen()">
+                        </owl-date-time>
+                        <div class="invalid-feedback" *ngIf="searchForm.submitted && refForm.invalid">
+                            <p class="ms-5" *ngIf="refForm.invalid">請起始輸入日期</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12 mt-md-0 mt-3">
+                    <div class="input-group has-validation">
+                        <i class="bi bi-calendar-date input-group-text" [owlDateTimeTrigger]="dt1"></i>
+                        <input class="form-control" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="結束時間"
+                            [max]="maxDate" [min]="refForm.value" [(ngModel)]="dateTo" name="refTo" #refTo="ngModel" required
+                            [ngClass]="{ 'is-invalid': searchForm.submitted && refTo.invalid }">
+                        <owl-date-time #dt1 [showSecondsTimer]="true" (afterPickerOpen)="dateToPickerOpen()">
+                        </owl-date-time>
+                        <div class="invalid-feedback" *ngIf="searchForm.submitted && refTo.invalid">
+                            <p class="ms-5" *ngIf="refTo.invalid">請結束輸入日期</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-4 col-md-12 mt-lg-0 mt-3">
+            <select class="form-select form-select" [(ngModel)]="selectId" name="selectId">
+                <option *ngFor="let item of selectItemsArray;let i = index;" [value]="i">{{ item }}</option>
+            </select>
+        </div>
+        <div class="col-xl-1 col-lg-2 col-sm-3 mt-xl-0 mt-3">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i> 搜尋</button>
+        </div>
+        <div class="form-check col-xl-3 col-sm-6 mt-xl-2 mt-3 ms-sm-3 ms-3">
+            <div class="row ">
+                <div class="col-6">
+                    <input #refTable type="checkbox" class="form-check-input" id="showTable" name="showTable" [(ngModel)]="isShowTable">
+                    <label for="showTable" class="form-check-label">顯示表格資料</label>
+                </div>
+                <div class="col-6">
+                    <input #refCharts type="checkbox" class="form-check-input" id="showCharts" name="showCharts" [(ngModel)]="isShowCharts">
+                    <label for="showCharts" class="form-check-label">顯示圖形資料</label>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="col-12 mt-3">
+        <table class="table table-striped" id="historyTable" [hidden]="!refTable.checked">
+            <thead>
+                <tr>
+                    <th (click)="key='id'; reverse=!reverse">
+                        id&nbsp;
+                        <i class="bi bi-arrow-down-up"></i>
+                    </th>
+                    <th (click)="key='datetime'; reverse=!reverse">日期&nbsp;<i class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='temp1'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 1">溫度1&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='humidity1'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 1">濕度1&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='lux1'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 1">照度1&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='speed1'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 1">風速1&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='temp2'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 2">溫度2&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='humidity2'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 2">濕度2&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='lux2'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 2">照度2&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='speed2'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 2">風速2&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='temp3'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 3">溫度3&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='humidity3'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 3">濕度3&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='lux3'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 3">照度3&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                    <th (click)="key='speed3'; reverse=!reverse" *ngIf="selectId == 0 || selectId == 3">風速3&nbsp;<i
+                            class="bi bi-arrow-down-up"></i></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr
+                    *ngFor="let item of greenHouseData$ | orderBy: key: reverse | paginate: { itemsPerPage: 10, currentPage: p };">
+                    <th scope="row">{{ item.id }}</th>
+                    <td>{{ item.datetime }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 1">{{ item.temp1 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 1">{{ item.humidity1 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 1">{{ item.lux1 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 1">{{ item.speed1 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 2">{{ item.temp2 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 2">{{ item.humidity2 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 2">{{ item.lux2 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 2">{{ item.speed2 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 3">{{ item.temp3 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 3">{{ item.humidity3 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 3">{{ item.lux3 }}</td>
+                    <td *ngIf="selectId == 0 || selectId == 3">{{ item.speed3 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-12 mb-3" [hidden]="!refTable.checked">
+        <pagination-controls class="d-flex justify-content-center" (pageChange)="p = $event" previousLabel="上一頁"
+        nextLabel="下一頁"></pagination-controls>
+    </div>
+
+    <div class="col-12 mt-3" [hidden]="!refCharts.checked">
+        <div id="template" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+    <div class="col-12" [hidden]="!refCharts.checked">
+        <div id="humidity" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+    <div class="col-12" [hidden]="!refCharts.checked">
+        <div id="lux" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+    <div class="col-12" [hidden]="!refCharts.checked">
+        <div id="speed" class="m-3 p-3 echart shadow rounded border"></div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<!-- 參考 https://dev.to/codeply/bootstrap-5-sidebar-examples-38pb -->
+
+
+<div class="row">
+    <nav class="d-flex align-items-center flex-wrap navbar navbar-expand-xl navbar-dark"
+        style="background-color: rgb(65, 65, 65);color: white;">
+        <!-- <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button> -->
+        <button class="btn float-end list-btn ms-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button" style="color: white;">
+            <i class="bi bi-list fs-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
+        </button>
+        <div class="navbar-collapse ms-2">
+            <div class="col-6 header-xl">
+                <div class="row">
+                    <div class="col-3 ps-4">
+                        <img class="navbar-brand logo" src="../../assets/img/itri-all.png" alt="logo">
+                    </div>
+                    <div class="col-9 my-auto ps-4">
+                        <ul class="navbar-nav" style="color: white;">
+                            <li class="nav-item active">
+                                <a class="text-light nav-link link" href="javascript:;"
+                                    [routerLink]="path.main">即時資料</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="text-light nav-link link" href="javascript:;"
+                                    [routerLink]="path.snapshot">現場畫面</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="text-light nav-link link" href="javascript:;"
+                                    [routerLink]="path.history">歷史資料</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="text-light nav-link link" href="javascript:;"
+                                    [routerLink]="path.setup">系統設定</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 header-xl">
+                <div class="d-flex justify-content-end align-items-center pe-4">
+                    <span class="pe-4 time">{{ time | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
+                    <button class="pe-2 btn btn-danger" type="button" [routerLink]="path.userflow.loginChild">
+                        <i class="bi bi-box-arrow-right"></i>
+                        登出
+                    </button>
+                </div>
+            </div>
+            <h4 class="position-absolute top-50 start-50 translate-middle header-xl">蘭花培養環境監測系統</h4>
+        </div>
+    </nav>
+</div>
+
+<div class="offcanvas offcanvas-start w-25 bg-dark" tabindex="-1" id="offcanvas" data-bs-keyboard="false"
+    data-bs-backdrop="false" aria-labelledby="offcanvas">
+    <div class="offcanvas-header">
+        <h3 class="offcanvas-title d-none d-sm-block text-white" id="offcanvas">蘭花培養環境監測系統</h3>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body px-0">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="javascript:;" [routerLink]="path.main">即時資料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="javascript:;" [routerLink]="path.snapshot">現場畫面</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="javascript:;" [routerLink]="path.history">歷史資料</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="javascript:;" [routerLink]="path.setup">系統設定</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="javascript:;" [routerLink]="path.userflow.loginChild">登出</a>
+            </li>
+        </ul>
+    </div>
+</div>
