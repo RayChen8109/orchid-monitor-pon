@@ -1,1 +1,58 @@
-<p>setup works!</p>
+<div class="container w-50 vh-100">
+    <div class="row position-relative top-5">
+        <div class="card">
+            <div class="card-body">
+                <form #setupForm="ngForm">
+                    <div class="m-3">
+                        <label for="periodID">感測器存檔週期(分)</label>
+                        <input class="form-control" type="number" id="periodID">
+                    </div>
+                    <div class="m-3">
+                        <label for="save_time1">影像儲存時間1</label>
+                        <div class="input-group">
+                            <input class="form-control border-end-0" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" id="save_time1" type="text">
+                            <owl-date-time [pickerType]="'timer'" #dt1></owl-date-time>
+                            <i class="bi bi-clock input-group-text bg-white botder-0" [owlDateTimeTrigger]="dt1"></i>
+                        </div>
+                    </div>
+                    <div class="m-3">
+                        <label for="save_time2">影像儲存時間2</label>
+                        <div class="input-group">
+                            <input class="form-control border-end-0" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" id="save_time2" type="text">
+                            <owl-date-time [pickerType]="'timer'" #dt2></owl-date-time>
+                            <i class="bi bi-clock input-group-text bg-white botder-0" [owlDateTimeTrigger]="dt2"></i>
+                        </div>
+                    </div>
+                    <div class="m-3">
+                        <label for="save_time3">影像儲存時間3</label>
+                        <div class="input-group">
+                            <input class="form-control border-end-0" [owlDateTime]="dt3" [owlDateTimeTrigger]="dt3" id="save_time3" type="text">
+                            <owl-date-time [pickerType]="'timer'" #dt3></owl-date-time>
+                            <i class="bi bi-clock input-group-text bg-white botder-0" [owlDateTimeTrigger]="dt3"></i>
+                        </div>
+                    </div>
+                    <div class="m-3">
+                        <label for="save_time4">影像儲存時間4</label>
+                        <div class="input-group">
+                            <input class="form-control border-end-0" [owlDateTime]="dt4" [owlDateTimeTrigger]="dt4" id="save_time4" type="text">
+                            <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+                            <i class="bi bi-clock input-group-text bg-white botder-0" [owlDateTimeTrigger]="dt4"></i>
+                        </div>
+                    </div>
+                    <div class="m-3">
+                        <label for="save_time5">影像儲存時間5</label>
+                        <div class="input-group">
+                            <input class="form-control border-end-0" [owlDateTime]="dt5" [owlDateTimeTrigger]="dt5" id="save_time5" type="text">
+                            <owl-date-time [pickerType]="'timer'" #dt5></owl-date-time>
+                            <i class="bi bi-clock input-group-text bg-white botder-0" [owlDateTimeTrigger]="dt5"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-12 d-flex justify-content-end">
+                        <button class="btn btn-primary me-3" type="submit">儲存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
