@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from "src/environments/environment";
 import { IGreenHouse } from './home/home.component';
 import { IUser } from "./user/login/login.component";
+import { ISaveTimeItem } from "./setup/setup.service";
 
 const api = environment.apiUrl;
 
@@ -19,6 +20,14 @@ export class ApiService {
 
   getBatchGreenHouseData(info: batchGreenHouseParam) {
     return this._http.post<IGreenHouse[]>(api + 'getBatchData.php', info);
+  }
+
+  getPicParameter() {
+    return this._http.post<ISaveTimeItem[]>(api + 'getPicParameter.php', {});
+  }
+
+  setPicParameter(info: ISaveTimeItem[]) {
+    return this._http.post<any>(api + 'setPicParameter.php', JSON.stringify(info));
   }
 }
 
