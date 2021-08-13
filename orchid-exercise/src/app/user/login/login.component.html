@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="container-fluid d-flex justify-content-center vh-100">
+    <div class="col-xxl-3 col-md-5 col-sm-6 col-10 align-items-center position-relative top-15">
+        <div class="card">
+            <form class="col-12" #accountSubmit="ngForm" [formGroup]="loginForm" 
+            (ngSubmit)="accountSubmit.form.valid && onSubmit()">
+                <div class="card-body d-flex justify-content-center">
+                    <div class="row w-100">
+                        <h4 class="card-title text-white col-12 mb-4 d-flex justify-content-center">系統登入</h4>
+                        <div class="col-12 mb-4">
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" id="user" placeholder="帳號" formControlName="user" required
+                                [ngClass]="{ 'is-invalid': accountSubmit.submitted && loginForm.controls['user'].invalid }">
+                                <div class="invalid-feedback">
+                                    <span class="bg-danger text-white">請輸入帳號</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 mb-4">
+                            <div class="input-group has-validation">
+                                <input type="password" class="form-control" id="password" placeholder="密碼" formControlName="password"
+                                [ngClass]="{ 'is-invalid': accountSubmit.submitted && loginForm.controls['password'].invalid }" required>
+                                <div class="invalid-feedback">
+                                    <span class="bg-danger text-white">請輸入密碼</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4 d-flex">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="remeberme" formControlName="rememberme">
+                                <label class="form-check-label text-white" for="remeberme">記住我</label>
+                            </div>
+                            <span class="ms-auto bg-danger text-white" *ngIf="isCorrect">帳號或密碼錯誤</span>
+                        </div>
+                        <div class="col-12 mb-3 d-grid">
+                            <button type="submit" class="btn btn-primary bg-login-submit border-0">登入</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

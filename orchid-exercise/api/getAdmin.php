@@ -1,7 +1,8 @@
 <?php
 
-include './db.php';
-$para = json_decode(file_get_contents('php://input'));
+include 'db.php';
+$para = json_decode(file_get_contents("php://input"));
+
 $username = $para->user;
 $password = $para->password;
 

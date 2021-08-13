@@ -1,6 +1,6 @@
 {
   "name": "orchid-exercise",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -30,6 +30,7 @@
     "popper.js": "^1.16.1",
     "postcss-loader": "^6.1.1",
     "rxjs": "~6.6.0",
+    "ts-md5": "^1.2.9",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
   },

@@ -15,7 +15,7 @@ export class ApiService {
   constructor(private _http: HttpClient) { }
 
   getAdmin(info: IUser) {
-    return this._http.post<IUser>(api + '/getAdmin.php', info);
+    return this._http.post<IUser>(api + 'getAdmin.php', info);
   }
 
   getBatchGreenHouseData(info: batchGreenHouseParam) {

@@ -1,48 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-$position-values: (
-    0: 0,
-    5: 5%,
-    50: 50%,
-    100: 100%,
-);
-
-$utilities: (
-    "position": (
-        property: position,
-        values: static relative absolute fixed sticky,
-    ),
-    "top": (
-        property: top,
-        values: $position-values,
-    ),
-    "bottom": (
-        property: bottom,
-        values: $position-values,
-    ),
-    "start": (
-        property: left,
-        class: start,
-        values: $position-values,
-    ),
-    "end": (
-        property: right,
-        class: end,
-        values: $position-values,
-    ),
-    "translate-middle": (
-        property: transform,
-        class: translate-middle,
-        values: (
-            null: translate(-50%, -50%),
-            x: translateX(-50%),
-            y: translateY(-50%),
-        ),
-    ),
-);
-
 @import "bootstrap/scss/functions";
+
+@import './util/styles/background.scss';
+@import './util/styles/position.scss';
+@import './util/styles/sizing.scss';
+// @import './util/styles/spacing.scss';
+
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";

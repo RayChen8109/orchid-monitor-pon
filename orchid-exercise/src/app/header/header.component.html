@@ -43,7 +43,7 @@
             <div class="col-6 header-xl">
                 <div class="d-flex justify-content-end align-items-center pe-4">
                     <span class="pe-4 time">{{ time | date: 'yyyy-MM-dd HH:mm:ss' }}</span>
-                    <button class="pe-2 btn btn-danger" type="button" [routerLink]="path.userflow.loginChild" [hidden]="true">
+                    <button class="pe-2 btn btn-danger" type="button" [routerLink]="path.userflow.loginChild">
                         <i class="bi bi-box-arrow-right"></i>
                         登出
                     </button>
@@ -74,7 +74,7 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="javascript:;" [routerLink]="path.setup">系統設定</a>
             </li>
-            <li class="nav-item" [hidden]="true">
+            <li class="nav-item">
                 <a class="nav-link text-white" href="javascript:;" [routerLink]="path.userflow.loginChild">登出</a>
             </li>
         </ul>
